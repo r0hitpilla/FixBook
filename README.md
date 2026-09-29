@@ -30,7 +30,17 @@ Design tokens (colors, typography, spacing, radius, shadows) are extracted verba
 
 1. **Supabase project**
    - Create a project at supabase.com.
-   - Run `supabase/schema.sql` then `supabase/storage.sql` in the SQL editor (see `supabase/README.md`).
+   - Apply the schema with the Supabase CLI (recommended — avoids SQL-editor copy/paste
+     mangling long lines):
+     ```
+     npx supabase login
+     npx supabase link --project-ref your-project-ref
+     npx supabase db push
+     ```
+     This runs `supabase/migrations/*.sql` (schema + storage buckets/policies) directly
+     against your project. If you'd rather paste into the SQL editor, use
+     `supabase/schema.sql` then `supabase/storage.sql` and paste from a plain-text
+     view (e.g. the raw file), not a rendered/wrapped one — see `supabase/README.md`.
    - Deploy the AI extraction edge function:
      ```
      supabase functions deploy extract-document
