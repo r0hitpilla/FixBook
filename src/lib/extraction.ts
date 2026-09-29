@@ -1,4 +1,4 @@
-import * as FileSystem from 'expo-file-system';
+import { File } from 'expo-file-system';
 import { supabase } from './supabase';
 import type { ExtractedFields } from '@/types/models';
 import type { ScanDocKind } from '@/store/addFlow';
@@ -23,7 +23,7 @@ export async function extractDocumentFields(
   mimeType: string,
   docKind: ScanDocKind
 ): Promise<ExtractionResult> {
-  const base64 = await FileSystem.readAsStringAsync(localUri, { encoding: FileSystem.EncodingType.Base64 });
+  const base64 = await new File(localUri).base64();
 
   const { data, error } = await supabase.functions.invoke('extract-document', {
     body: { imageBase64: base64, mimeType, docKind },
