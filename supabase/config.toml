@@ -413,3 +413,11 @@ enabled = true
 # formatted with uppercase keywords, indent 2, max width 180, trailing commas,
 # and column/key alignment. Set to "null" to emit raw, unformatted SQL.
 # format_options = "{\"keywordCase\":\"upper\",\"indent\":2,\"maxWidth\":180,\"commaStyle\":\"trailing\"}"
+
+# extract-document is called from the app without a per-user session in some
+# flows and doesn't need to know who the caller is — it only proxies a photo
+# to Gemini's vision API — so JWT verification is disabled for it. Without
+# this, Supabase's Edge Functions gateway rejects every request at the auth
+# layer with "UNAUTHORIZED_NO_AUTH_HEADER" before the function code runs.
+[functions.extract-document]
+verify_jwt = false
