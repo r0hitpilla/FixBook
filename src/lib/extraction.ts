@@ -1,4 +1,4 @@
-import { File } from 'expo-file-system';
+import { ImageManipulator, SaveFormat } from 'expo-image-manipulator';
 import { supabase } from './supabase';
 import type { ExtractedFields } from '@/types/models';
 import type { ScanDocKind } from '@/store/addFlow';
@@ -8,6 +8,14 @@ export interface ExtractionResult {
   confidencePercent: number;
   fieldsFound: number;
 }
+
+// Modern phone cameras produce multi-megabyte photos; base64-encoding one
+// inflates it further (~33%), and uploading that over a slow/flaky mobile
+// connection can get cut off mid-transfer — the edge function then receives
+// a truncated body and fails to parse it as JSON. Downscaling to a width
+// that's still plenty legible for OCR keeps uploads small and reliable.
+const MAX_DIMENSION = 1600;
+const JPEG_QUALITY = 0.7;
 
 /**
  * Sends the captured photo to the `extract-document` Supabase Edge Function
@@ -23,10 +31,15 @@ export async function extractDocumentFields(
   mimeType: string,
   docKind: ScanDocKind
 ): Promise<ExtractionResult> {
-  const base64 = await new File(localUri).base64();
+  const rendered = await ImageManipulator.manipulate(localUri).resize({ width: MAX_DIMENSION }).renderAsync();
+  const saved = await rendered.saveAsync({ compress: JPEG_QUALITY, format: SaveFormat.JPEG, base64: true });
+
+  if (!saved.base64) {
+    throw new Error('Could not prepare the photo for upload. Please try again.');
+  }
 
   const { data, error } = await supabase.functions.invoke('extract-document', {
-    body: { imageBase64: base64, mimeType, docKind },
+    body: { imageBase64: saved.base64, mimeType: 'image/jpeg', docKind },
   });
 
   if (error) throw error;

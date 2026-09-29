@@ -61,7 +61,15 @@ serve(async (req) => {
       });
     }
 
-    const { imageBase64, mimeType, docKind } = await req.json();
+    const bodyText = await req.text();
+    if (!bodyText) {
+      return new Response(
+        JSON.stringify({ error: 'Request body was empty — the upload may have been interrupted. Please retry.' }),
+        { status: 400, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const { imageBase64, mimeType, docKind } = JSON.parse(bodyText);
     if (!imageBase64 || !mimeType) {
       return new Response(JSON.stringify({ error: 'imageBase64 and mimeType are required.' }), {
         status: 400,
