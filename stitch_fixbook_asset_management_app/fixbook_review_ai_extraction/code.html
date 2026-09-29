@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "tertiary": "#000000", "surface-variant": "#d3e4fe", "secondary-fixed-dim": "#b4c5ff", "secondary-container": "#316bf3", "background": "#f8f9ff", "on-primary-fixed-variant": "#3f465c", "on-error-container": "#93000a", "on-error": "#ffffff", "outline-variant": "#c6c6cd", "tertiary-fixed-dim": "#4edea3", "surface-bright": "#f8f9ff", "error": "#ba1a1a", "inverse-surface": "#213145", "secondary": "#0051d5", "secondary-fixed": "#dbe1ff", "surface-container-low": "#eff4ff", "primary": "#000000", "inverse-on-surface": "#eaf1ff", "surface": "#f8f9ff", "on-tertiary": "#ffffff", "surface-container-lowest": "#ffffff", "surface-container": "#e5eeff", "on-tertiary-fixed-variant": "#005236", "on-tertiary-fixed": "#002113", "tertiary-fixed": "#6ffbbe", "on-background": "#0b1c30", "on-secondary-container": "#fefcff", "on-primary-fixed": "#131b2e", "surface-tint": "#565e74", "inverse-primary": "#bec6e0", "on-tertiary-container": "#009668", "on-surface-variant": "#45464d", "on-secondary-fixed": "#00174b", "on-primary-container": "#7c839b", "surface-dim": "#cbdbf5", "on-surface": "#0b1c30", "outline": "#76777d", "surface-container-high": "#dce9ff", "tertiary-container": "#002113", "on-secondary-fixed-variant": "#003ea8", "primary-fixed": "#dae2fd", "on-primary": "#ffffff", "error-container": "#ffdad6", "surface-container-highest": "#d3e4fe", "primary-container": "#131b2e", "primary-fixed-dim": "#bec6e0", "on-secondary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-xs": "0.25rem", "space-md": "1rem", "gutter-lg": "1.5rem", "gutter": "1rem", "margin-lg": "2rem", "space-lg": "1.5rem", "space-2xl": "3rem", "space-2xs": "0.125rem", "gutter-sm": "0.75rem", "margin-sm": "1rem", "margin": "1.25rem", "space-sm": "0.5rem", "space-xl": "2rem" }, "fontFamily": { "display-lg": ["Inter"], "body-sm": ["Inter"], "label-md": ["Inter"], "headline-xl": ["Inter"], "headline-md": ["Inter"], "label-sm": ["Inter"], "body-lg": ["Inter"], "code-md": ["Inter"], "headline-sm": ["Inter"], "label-lg": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Inter"] }, "fontSize": { "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "700"}], "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0.005em", "fontWeight": "400"}], "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}], "headline-xl": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.025em", "fontWeight": "700"}], "headline-md": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "600"}], "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}], "body-lg": ["17px", {"lineHeight": "24px", "letterSpacing": "-0.005em", "fontWeight": "400"}], "code-md": ["13px", {"lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500"}], "headline-sm": ["17px", {"lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "600"}], "label-lg": ["14px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}], "body-md": ["15px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}], "headline-lg": ["26px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-xs"><button aria-label="Go back" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container-high transition-colors" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="Brand logo. - Primary color: #0f172a
+- Font: inter
+- Mode: light
+- Roundness: rounded-md
+" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VL85AR-xJQsiK-zMZFau-m3g4TNc3zewP95x97Oh1aIPBy2fh-jgrqw0fgT1vuR_MCxi2Tv4Vigi5-lN5RMJFR29-VsYEB3AV-AWI1dBSiStuy0i_RK4D6OQA5jEEL_j2wB3XQUSsY79REnIA3sbscRtW07ob1etO6chsPvCwTymEzEVO30E0gigSWKWtgg1k65FeXVaycBttPau4vPq3TXV3pkanGmF-uF3-7Nxw4ZmNb1LE7nGXQoXQ"/><span class="font-label-md text-label-md text-on-surface-variant font-semibold">FixBook</span></div><h1 class="font-headline-sm text-headline-sm text-on-surface text-center flex-1 truncate px-space-xs">Maintenance Reminder</h1><div class="flex items-center gap-space-xs"><button aria-label="Options menu" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"><span class="material-symbols-outlined text-[24px]">more_vert</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ml-space-xs" src="https://lh3.googleusercontent.com/aida/AEtjO1UayrIE2MlSYqna0J3Y8HPCdj8aG0HkkE7-SCj8rkyJgZjTnmpuPgJJi1J3-SQLHX70R90EHrLW-CEplvSLEp_v1PLUgTBaf6mwVLwWpyM3JLYNOhmOuLv2lXJMJ_F7qyNSSJ039oH8nWhpz99VHR1ysOWGye0x-f2O0WLahfFuyP5CdSkUalFGQ9ursHma6UUERd905oSQgavVQbrFgIv8YrTOF7tLJCcJkkYdMOuV0g1lf7ZPTk1Pyi4"/></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface px-margin min-h-screen"><div class="flex flex-col w-full pb-8">
+<div class="flex flex-col gap-space-md pt-space-xs">
+<!-- AI Extraction Badge Banner -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between gap-space-sm relative z-10">
+<div class="flex flex-col gap-space-2xs">
+<div class="inline-flex items-center gap-space-xs px-2.5 py-1 bg-tertiary-container rounded-full w-fit">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-tertiary-fixed uppercase tracking-wider">8 Details Detected</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface mt-1">Ready for verification</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container inline-block"></span>
+            98% Confidence • On-device secure OCR
+          </p>
+</div>
+<!-- Receipt Snapshot Modal Trigger -->
+<button aria-label="View original receipt" class="flex flex-col items-center justify-center p-1.5 bg-surface-container-lowest rounded-lg shadow-sm hover:bg-surface-container-low transition-colors active:scale-95 text-center min-w-[72px]" id="viewReceiptBtn">
+<div class="relative w-12 h-14 rounded overflow-hidden bg-surface-container-high mb-1 flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-90" data-alt="High-resolution top-down perspective macro view of a clean folded printed electronics store paper invoice tax bill with clean crisp thermal font typography and subtle blue watermarking" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6mWiANBrtOhGfzXQspHLTjXYzLehZkS3AHehJpu9wgVoGxG0uyOAzwvW1tFL9FWRbg3sx5_9Aux-XmJiYsrbRX-myuZDgQlzCJuOEAKM5fOuxqDmxr6ZeE-_Ibc314anS0ifT1i8ARvyEqXWtu7JkJ6KRNNF4wxFZ9BCFruhcthvHCBbWSwLt7hboEgfCIsGmdl0HL8KszAK6fR1NcTOEPg4yvmjrBl5moRh4hFPVZs44jp3wMT2W"/>
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px] text-on-surface">zoom_in</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Inspect</span>
+</button>
+</div>
+<!-- Ambient Glow Behind AI Banner -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-secondary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+</div>
+<!-- Main Extracted Asset Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<!-- Card Header: Title & Category -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Asset Name</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-secondary-fixed text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px] text-secondary">verified</span>
+            Auto-Extracted
+          </span>
+</div>
+<div class="flex items-center justify-between gap-space-xs bg-surface-container-low px-3 py-2.5 rounded-lg group focus-within:ring-2 focus-within:ring-secondary-container">
+<input class="bg-transparent font-headline-sm text-headline-sm text-on-surface w-full focus:outline-none truncate" id="assetNameInput" type="text" value="Samsung Front Load Washing Machine"/>
+<button aria-label="Edit title" class="text-on-surface-variant group-focus-within:text-secondary hover:text-on-surface p-1 rounded-md">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+<!-- Category Pill Dropdown Selector -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Category</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-low text-on-surface font-body-md text-body-md py-2.5 pl-3.5 pr-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-container cursor-pointer font-medium">
+<option selected="">Home Appliances</option>
+<option>Kitchen &amp; Culinary</option>
+<option>Consumer Electronics</option>
+<option>Smart Home &amp; Climate</option>
+<option>Mobility &amp; Vehicles</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-surface-variant pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Core Hardware Identifiers (Grid) -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<!-- Model Number -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Model No.</span>
+<button class="text-on-surface-variant hover:text-secondary" onclick="navigator.clipboard.writeText('WW90T554DAN')" title="Copy model">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-code-md text-code-md text-on-surface font-semibold tracking-tight">WW90T554DAN</span>
+</div>
+</div>
+<!-- Serial Number -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Serial ID</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">barcode</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="font-code-md text-code-md text-on-surface font-semibold tracking-tight">847291038592A</span>
+</div>
+</div>
+</div>
+<!-- Commercial Ledger Section -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Purchase Details Pair -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Purchase Date -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Purchase Date</span>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary">calendar_today</span>
+<span class="font-label-lg text-label-lg font-semibold">12 Aug 2026</span>
+</div>
+</div>
+<!-- Purchase Price -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Purchase Amount</span>
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">payments</span>
+<span class="font-label-lg text-label-lg font-semibold tracking-tight">₹42,999</span>
+</div>
+</div>
+</div>
+<!-- Retailer / Store Info -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-xs min-w-0">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px] text-on-surface">storefront</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Merchant / Retailer</span>
+<span class="font-body-md text-body-md text-on-surface font-medium truncate">Croma, Indiranagar Flagship</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant shrink-0 ml-2">check_circle</span>
+</div>
+<!-- Warranty Coverage Banner -->
+<div class="bg-surface-container-high/60 p-space-sm rounded-lg flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-on-surface">shield</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Warranty Structure</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Valid</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">1 Year Comprehensive + 10 Year Digital Inverter Motor</p>
+<div class="flex items-center justify-between pt-1 font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Primary Expire Date:</span>
+<span class="text-on-surface font-semibold">12 Aug 2027</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Suggested Automated Actions (Smart Care) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-[20px] text-secondary">tips_and_updates</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Smart Maintenance Routines</h2>
+</div>
+<!-- Toggle 1: Drum Clean -->
+<label class="flex items-start justify-between gap-space-sm cursor-pointer py-1.5">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Drum Clean cycle reminder</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Automatic notification interval every 3 months</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
+<input checked="" class="sr-only peer" id="drumCleanToggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-surface-container after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+</div>
+</label>
+<div class="w-full h-[1px] bg-surface-container"></div>
+<!-- Toggle 2: Warranty Notice -->
+<label class="flex items-start justify-between gap-space-sm cursor-pointer py-1.5">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-semibold">Warranty Expiration alert</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Notify 30 days prior to comprehensive coverage end</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer shrink-0 mt-0.5">
+<input checked="" class="sr-only peer" id="warrantyToggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-surface-container-lowest after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-surface-container after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+</div>
+</label>
+</div>
+<!-- Reassurance Footer Notice -->
+<div class="flex items-center justify-center gap-2 px-space-sm py-1">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">lock_reset</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-center">
+        Never irreversible — specs and receipts can be modified anytime.
+      </p>
+</div>
+<!-- Bottom Action Dock -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<button class="w-full h-12 bg-primary text-on-primary rounded-xl font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all hover:bg-primary-container" id="saveAssetBtn">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span>Save to FixBook</span>
+</button>
+<div class="flex items-center justify-center gap-space-lg pt-1">
+<button class="font-label-md text-label-md text-secondary hover:underline py-2" id="editAllBtn">
+          Manual Edit All Fields
+        </button>
+<span class="text-on-surface-variant text-[12px]">•</span>
+<button class="font-label-md text-label-md text-error hover:underline py-2" id="discardBtn">
+          Discard Scan
+        </button>
+</div>
+</div>
+</div>
+<!-- Document Preview Modal Overlay (Hidden by Default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-primary/60 backdrop-blur-sm hidden px-margin" id="receiptModal">
+<div class="bg-surface-container-lowest rounded-2xl max-w-sm w-full overflow-hidden shadow-2xl flex flex-col animate-in fade-in zoom-in-95 duration-200">
+<div class="flex items-center justify-between p-space-md bg-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-on-surface">receipt_long</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Original Receipt</span>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface hover:bg-surface-dim" id="closeModalBtn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="p-space-md flex flex-col gap-space-sm max-h-[70vh] overflow-y-auto">
+<div class="relative w-full rounded-xl overflow-hidden bg-surface-container-high">
+<img class="w-full h-auto object-contain" data-alt="High-resolution complete view of retail store paper purchase receipt for Samsung washing machine with clear transaction date itemized price tax and barcode printed clearly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2I5x2SPAmSGR1ncw48P8WAOSbO5r_5jznbqBRox3JoMrp2ChLW_WT_sSBbd8S8dzlX1OLGrUS-BqKQQMnv4BzqTDStm6TwjrbZO7m4VulxvX-J6X1KCN0MZYbsceeMQNpaqhiszUWC1dF-j4I13g6zVbCqGHmIR2pK_oOYNZGfmZX9RRLTu6yJhVGFbX5vKcKxekyCG8Du93zlNCUflFL2vnuGK0O_NpQBxFJbwbdNl7wam21wK8u"/>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span>Scanned on: Today, 14:32</span>
+<span>1.8 MB • Encrypted local storage</span>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-low flex justify-end">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-medium" id="closeModalFooterBtn">Done Inspecting</button>
+</div>
+</div>
+</div>
+<!-- Interactive Local Micro-Interactions -->
+<script>
+    const receiptModal = document.getElementById('receiptModal');
+    const viewReceiptBtn = document.getElementById('viewReceiptBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const closeModalFooterBtn = document.getElementById('closeModalFooterBtn');
+    const saveAssetBtn = document.getElementById('saveAssetBtn');
+
+    function toggleModal(show) {
+      if (show) {
+        receiptModal.classList.remove('hidden');
+      } else {
+        receiptModal.classList.add('hidden');
+      }
+    }
+
+    if (viewReceiptBtn) viewReceiptBtn.addEventListener('click', () => toggleModal(true));
+    if (closeModalBtn) closeModalBtn.addEventListener('click', () => toggleModal(false));
+    if (closeModalFooterBtn) closeModalFooterBtn.addEventListener('click', () => toggleModal(false));
+
+    receiptModal.addEventListener('click', (e) => {
+      if (e.target === receiptModal) toggleModal(false);
+    });
+
+    if (saveAssetBtn) {
+      saveAssetBtn.addEventListener('click', () => {
+        const originalText = saveAssetBtn.innerHTML;
+        saveAssetBtn.innerHTML = `
+          <span class="material-symbols-outlined animate-spin text-[20px]">progress_activity</span>
+          <span>Securing Asset Record...</span>
+        `;
+        saveAssetBtn.disabled = true;
+        setTimeout(() => {
+          saveAssetBtn.innerHTML = `
+            <span class="material-symbols-outlined text-[20px] text-tertiary-fixed">task_alt</span>
+            <span>Saved to Vault!</span>
+          `;
+          setTimeout(() => {
+            saveAssetBtn.innerHTML = originalText;
+            saveAssetBtn.disabled = false;
+          }, 1800);
+        }, 900);
+      });
+    }
+  </script>
+</div></main></body></html>
