@@ -1,12 +1,15 @@
 // Supabase Edge Function: extract-document
 //
 // Receives a base64 photo of a receipt/warranty card/product label/vehicle
-// document and asks Claude's vision API to read out structured fields. Runs
-// server-side so ANTHROPIC_API_KEY never ships inside the mobile app bundle.
+// document and asks Google Gemini's vision API to read out structured
+// fields. Runs server-side so GEMINI_API_KEY never ships inside the mobile
+// app bundle. Gemini has a genuinely free tier (get a key at
+// https://aistudio.google.com/apikey, no credit card required), which is
+// why it's used here instead of a paid-only provider.
 //
 // Deploy with:
 //   supabase functions deploy extract-document
-//   supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
+//   supabase secrets set GEMINI_API_KEY=AIza...
 //
 // Contract: the model is instructed to return `null` for anything it cannot
 // actually read from the image. This function does not fill in guesses —
@@ -15,7 +18,8 @@
 
 import { serve } from 'https://deno.land/std@0.224.0/http/server.ts';
 
-const ANTHROPIC_API_KEY = Deno.env.get('ANTHROPIC_API_KEY');
+const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY');
+const GEMINI_MODEL = Deno.env.get('GEMINI_MODEL') ?? 'gemini-2.0-flash';
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
@@ -29,7 +33,7 @@ const DOC_KIND_HINT: Record<string, string> = {
 };
 
 const EXTRACTION_SCHEMA_PROMPT = `You are reading a photographed document for an asset-tracking app called FixBook.
-Return ONLY a single JSON object (no prose, no markdown fences) with exactly these keys:
+Return a single JSON object with exactly these keys:
 {
   "product": string | null,
   "category": one of ["vehicles","home_appliances","electronics","cameras_gear","tools_equipment","other"] | null,
@@ -44,15 +48,14 @@ Return ONLY a single JSON object (no prose, no markdown fences) with exactly the
 Rules:
 - Only fill a field if the text is actually visible and legible in the image.
 - If a field is not present or you are not confident, set it to null. Never guess or invent a value.
-- purchase_price must be a plain number (no currency symbols or commas).
-- Respond with raw JSON only.`;
+- purchase_price must be a plain number (no currency symbols or commas).`;
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: CORS_HEADERS });
 
   try {
-    if (!ANTHROPIC_API_KEY) {
-      return new Response(JSON.stringify({ error: 'ANTHROPIC_API_KEY is not configured on the server.' }), {
+    if (!GEMINI_API_KEY) {
+      return new Response(JSON.stringify({ error: 'GEMINI_API_KEY is not configured on the server.' }), {
         status: 500,
         headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
       });
@@ -68,27 +71,27 @@ serve(async (req) => {
 
     const hint = DOC_KIND_HINT[docKind] ?? 'a receipt, warranty card, product label, or vehicle document';
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-5',
-        max_tokens: 1024,
-        messages: [
-          {
-            role: 'user',
-            content: [
-              { type: 'text', text: `This photo is ${hint}.\n\n${EXTRACTION_SCHEMA_PROMPT}` },
-              { type: 'image', source: { type: 'base64', media_type: mimeType, data: imageBase64 } },
-            ],
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          contents: [
+            {
+              role: 'user',
+              parts: [
+                { text: `This photo is ${hint}.\n\n${EXTRACTION_SCHEMA_PROMPT}` },
+                { inline_data: { mime_type: mimeType, data: imageBase64 } },
+              ],
+            },
+          ],
+          generationConfig: {
+            responseMimeType: 'application/json',
           },
-        ],
-      }),
-    });
+        }),
+      }
+    );
 
     if (!response.ok) {
       const text = await response.text();
@@ -99,7 +102,7 @@ serve(async (req) => {
     }
 
     const result = await response.json();
-    const rawText: string = result?.content?.[0]?.text ?? '{}';
+    const rawText: string = result?.candidates?.[0]?.content?.parts?.[0]?.text ?? '{}';
 
     let fields: Record<string, unknown>;
     try {

@@ -41,10 +41,11 @@ Design tokens (colors, typography, spacing, radius, shadows) are extracted verba
      against your project. If you'd rather paste into the SQL editor, use
      `supabase/schema.sql` then `supabase/storage.sql` and paste from a plain-text
      view (e.g. the raw file), not a rendered/wrapped one — see `supabase/README.md`.
-   - Deploy the AI extraction edge function:
+   - Deploy the AI extraction edge function (uses Google Gemini, which has a free
+     tier — get a key at https://aistudio.google.com/apikey, no credit card needed):
      ```
      supabase functions deploy extract-document
-     supabase secrets set ANTHROPIC_API_KEY=sk-ant-...
+     supabase secrets set GEMINI_API_KEY=AIza...
      ```
    - Enable Email/Password auth under Authentication → Providers.
 
