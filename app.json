@@ -1,0 +1,70 @@
+{
+  "expo": {
+    "name": "FixBook",
+    "slug": "fixbook",
+    "scheme": "fixbook",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fixbook.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "FixBook uses your camera to scan receipts, warranty cards, and product labels so it can automatically extract asset details.",
+        "NSPhotoLibraryUsageDescription": "FixBook needs access to your photo library so you can attach photos and documents to your assets.",
+        "NSPhotoLibraryAddUsageDescription": "FixBook saves scanned document photos to your library when you choose to keep a copy."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F8F9FF",
+        "foregroundImage": "./assets/images/adaptive-icon.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.fixbook.app",
+      "permissions": ["CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE", "POST_NOTIFICATIONS"]
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 160,
+          "resizeMode": "contain",
+          "backgroundColor": "#F8F9FF"
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "FixBook uses your camera to scan receipts, warranty cards, and product labels."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "FixBook needs access to your photos to attach them to assets and documents."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/icon.png",
+          "color": "#0051D5"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
