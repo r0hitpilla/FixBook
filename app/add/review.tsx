@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { Image } from 'expo-image';
-import * as FileSystem from 'expo-file-system';
+import { File } from 'expo-file-system';
 import { router } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, radius, spacing, typography } from '@/theme';
@@ -51,8 +51,7 @@ export default function ReviewExtractionScreen() {
 
       let documentId: string | undefined;
       if (photoUri && mimeType) {
-        const info = await FileSystem.getInfoAsync(photoUri);
-        const fileSizeBytes = info.exists ? (info.size ?? 0) : 0;
+        const fileSizeBytes = new File(photoUri).size;
         const doc = await uploadDocument.mutateAsync({
           assetId: asset.id,
           kind: docKind,

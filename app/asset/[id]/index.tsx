@@ -3,7 +3,7 @@ import { ActivityIndicator, Alert, Modal, Pressable, ScrollView, StyleSheet, Tex
 import { Image } from 'expo-image';
 import { router, useLocalSearchParams } from 'expo-router';
 import * as ImagePicker from 'expo-image-picker';
-import * as FileSystem from 'expo-file-system';
+import { File } from 'expo-file-system';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { colors, radius, spacing, typography } from '@/theme';
 import { AppHeader, DocumentCard, Icon, MaintenanceCard, PrimaryButton, SecondaryButton, SectionHeader } from '@/components';
@@ -48,14 +48,13 @@ export default function AssetDetailScreen() {
     setAttaching(true);
     try {
       const file = result.assets[0];
-      const info = await FileSystem.getInfoAsync(file.uri);
       await uploadDocument.mutateAsync({
         assetId: asset.id,
         kind: 'other',
         title: `${asset.name} attachment`,
         localUri: file.uri,
         mimeType: file.mimeType ?? 'image/jpeg',
-        fileSizeBytes: info.exists ? (info.size ?? 0) : 0,
+        fileSizeBytes: new File(file.uri).size,
       });
     } catch (e: any) {
       Alert.alert('Could not attach file', e?.message ?? 'Please try again.');
